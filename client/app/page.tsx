@@ -26,7 +26,7 @@ export default function ForexSignalPage() {
     // Auto-hide video after 6 seconds
     const videoTimer = setTimeout(() => {
       setShowVideo(false);
-    }, 600);
+    }, 18000);
 
     return () => clearTimeout(videoTimer);
   }, []);
@@ -99,9 +99,20 @@ export default function ForexSignalPage() {
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
               </svg>
             </button>
-            <video autoPlay muted className="intro-video">
+            <video
+              autoPlay
+              muted
+              className="intro-video"
+              style={{
+                aspectRatio: "9/16",
+                width: "100%",
+                maxWidth: "360px",
+                borderRadius: "1.5rem",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+              }}
+            >
               <source
-                src="https://res.cloudinary.com/dkfmaqtpy/image/upload/v1752026334/great-mega-2_dw8yn9.jpg"
+                src="https://res.cloudinary.com/dkfmaqtpy/video/upload/v1752029776/great-mega-video_gdpbu2.mp4"
                 type="video/mp4"
               />
               Your browser does not support the video tag.
@@ -117,7 +128,7 @@ export default function ForexSignalPage() {
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <p>Welcome Video</p>
+              <p>FX</p>
             </div>
           </div>
         </div>
