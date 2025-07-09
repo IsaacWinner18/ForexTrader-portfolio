@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -17,9 +17,24 @@ export default function ForexSignalPage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [showVideo, setShowVideo] = useState(true);
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const closeVideo = () => {
     setShowVideo(false);
+  };
+
+  const handleVolumeToggle = () => {
+    setIsMuted((prev) => {
+      const newMuted = !prev;
+      if (videoRef.current) {
+        videoRef.current.muted = newMuted;
+        if (!newMuted) {
+          videoRef.current.play(); // Ensure video plays with sound
+        }
+      }
+      return newMuted;
+    });
   };
 
   useEffect(() => {
@@ -100,8 +115,11 @@ export default function ForexSignalPage() {
               </svg>
             </button>
             <video
+              ref={videoRef}
               autoPlay
-              muted
+              playsInline
+              muted={isMuted}
+              loop
               className="intro-video"
               style={{
                 aspectRatio: "9/16",
@@ -117,18 +135,33 @@ export default function ForexSignalPage() {
               />
               Your browser does not support the video tag.
             </video>
-            <div className="video-placeholder">
+            <div
+              className="video-placeholder"
+              style={{ cursor: "pointer" }}
+              onClick={handleVolumeToggle}
+            >
               <div className="video-play-icon">
-                <svg
-                  width="80"
-                  height="80"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                {isMuted ? (
+                  <svg
+                    width="80"
+                    height="80"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03zm2.5 0c0 2.76-1.69 5.1-4.1 6.03l1.45 1.45c2.54-1.17 4.15-3.71 4.15-6.48s-1.61-5.31-4.15-6.48l-1.45 1.45C18.31 6.9 20 9.24 20 12z" />
+                  </svg>
+                ) : (
+                  <svg
+                    width="80"
+                    height="80"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03zm3.5 0c0 2.76-1.69 5.1-4.1 6.03l1.45 1.45c2.54-1.17 4.15-3.71 4.15-6.48s-1.61-5.31-4.15-6.48l-1.45 1.45C18.31 6.9 20 9.24 20 12zm-9-7v14c0 .55-.45 1-1 1s-1-.45-1-1V5c0-.55.45-1 1-1s1 .45 1 1zm-4 4v6c0 .55.45 1 1 1h3v-8H8c-.55 0-1 .45-1 1z" />
+                  </svg>
+                )}
               </div>
-              <p>FX</p>
+              <p> {isMuted ? (<span>Click for Sound</span>) : (<span></span>)}</p>
             </div>
           </div>
         </div>
