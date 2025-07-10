@@ -220,13 +220,16 @@ export default function ForexSignalPage() {
                   {/* Optional: Add a glowing ring */}
                   <span className="absolute inset-0 rounded-full ring-4 ring-blue-300/40 pointer-events-none animate-pulse-slow"></span>
                 </div>
-                <h1 className="text-4xl md:text-6xl py-4 font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-blue-500 drop-shadow-lg animate-fade-in-up animate-gradient-move">
+                <h1 className="font-gotham-condensed text-4xl md:text-6xl py-4 font-extrabold mb-4 bg-clip-text text-blue bg-gradient-to-r from-black via-blue-200 to-black drop-shadow-lg animate-fade-in-up animate-gradient-move">
                   Profit{" "}
                   <span className="relative inline-block px-4 py-1 mx-1 rounded-full bg-blue-900 text-white shadow-lg border-2 border-blue-400 ring-2 ring-blue-300/40 animate-pulse-slow">
                     Smarter
                     <span className="absolute -inset-1 rounded-full bg-blue-400/20 blur-lg -z-10"></span>
                   </span>
+                  <div>
                   Trade <span className="text-blue-200">With Me</span>
+
+                  </div>
                 </h1>
                 <p className="text-sm md:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto">
                   Join my 10,000+ Telegram community getting daily Forex signals

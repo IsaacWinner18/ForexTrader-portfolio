@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 /* Video Overlay */
 .video-overlay {
   position: fixed;
@@ -68,7 +67,11 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(29, 78, 216, 0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.3),
+    rgba(29, 78, 216, 0.3)
+  );
 }
 
 .video-play-icon {
@@ -80,4 +83,32 @@
 .video-placeholder p {
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+@font-face {
+  font-family: "GothamCondensed";
+  src: url("/GothamCondensed-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GothamCondensed";
+  src: url("/GothamCondensed-Book.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GothamCondensed";
+  src: url("/GothamCondensed-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GothamCondensed";
+  src: url("/GothamCondensed-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+.font-gotham-condensed {
+  font-family: "GothamCondensed", Arial, sans-serif;
 }
